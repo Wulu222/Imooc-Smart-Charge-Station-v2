@@ -1,0 +1,21 @@
+# 测试环境配置
+server:
+  port: 7091
+
+# MongoDB测试配置
+spring:
+  data:
+    mongodb:
+      # 测试环境使用专门的测试数据库，避免污染生产数据
+      uri: mongodb://localhost:27017/charging_station_test
+      database: charging_station_test
+      # 连接池配置
+      connection:
+        max-idle-time: 60000
+        max-wait-time: 10000
+
+# 日志配置
+logging:
+  level:
+    org.springframework.data.mongodb.core: DEBUG
+    com.easyit.chargeweb: INFO
