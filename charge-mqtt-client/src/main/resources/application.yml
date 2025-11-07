@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+# SpringBoot 日志配置
+logging:
+  config: classpath:logback-spring.xml
+
+
+# MQTT客户端配置
+mqtt:
+  # EMQX服务器地址 (tcp://ip:1883)
+#  host: tcp://192.168.0.2:1883
+  # 采用基于websocket的连接 (ws://ip:8083)
+  host: ws://192.168.0.3:8083
+  # 工厂模式id
+  client_id: easyit_charge_station_mqtt
+  # 发送主题
+  topic: charge/control
+  options:
+    # 设置为false表示服务器会保留客户端的连接记录，
+    # 客户端重连之后能获取到服务器在客户端断开连接期间推送的消息
+    clean_session: false

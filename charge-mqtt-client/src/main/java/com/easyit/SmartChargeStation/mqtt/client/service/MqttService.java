@@ -1,0 +1,42 @@
+package com.easyit.SmartChargeStation.mqtt.client.service;
+
+
+import com.easyit.SmartChargeStation.mqtt.client.model.MqttConstants;
+import com.easyit.SmartChargeStation.protocol.mqtt.message.ChargePayload;
+import org.springframework.integration.annotation.IntegrationComponentScan;
+import org.springframework.integration.annotation.MessagingGateway;
+import org.springframework.integration.mqtt.support.MqttHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.handler.annotation.Header;
+
+/* **********************
+ *
+ * @MessagingGateway的作用：
+ *
+ * 拦截发送的mqtt消息，然后投放到消息通道
+ *
+ * @IntegrationComponentScan的作用：
+ *
+ * 能扫描到@MessagingGateway
+ *
+ *
+ * *********************/
+@IntegrationComponentScan
+@MessagingGateway(defaultRequestChannel = MqttConstants.OUT_CHANNEL)
+public interface MqttService {
+
+    /* **********************
+     *
+     * 注意：
+     * topic这个参数，
+     * 必须使用@Header(MqttHeaders.TOPIC)修饰
+     * 视频没有讲解这个
+     *
+     * *********************/
+
+    //发送消息
+    void send(@Header(MqttHeaders.TOPIC)String topic, ChargePayload message);
+
+    //发送消息
+    void send(@Header(MqttHeaders.TOPIC)String topic, Message<byte[]> message);
+}
