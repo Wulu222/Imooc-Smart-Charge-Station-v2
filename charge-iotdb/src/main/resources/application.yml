@@ -1,0 +1,17 @@
+# IoTDB配置 - 适用于Apache IoTDB 1.3.2版本
+# 充电桩监控系统专用
+
+server:
+  port: 8082
+  
+iotdb:
+  username: root
+  password: root
+  ip: iotdb  # 可替换为localhost或实际服务器IP
+  port: 6667  # IoTDB 1.3.2默认端口
+  # 会话池最大连接数 - 调整根据实际负载
+  maxSize: 200
+  # 连接超时时间（毫秒）
+  connectionTimeoutInMs: 60000
+  # 重连间隔（毫秒）
+  retryIntervalInMs: 1000
