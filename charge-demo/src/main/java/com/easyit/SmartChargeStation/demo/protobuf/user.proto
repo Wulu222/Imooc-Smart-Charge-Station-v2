@@ -1,0 +1,41 @@
+//protobuf语法有 proto2和proto3两种，这里指定 proto3
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.imooc.SmartChargeStation.demo.protobuf";
+//生成的java文件名
+option java_outer_classname = "UserProtobuf";
+
+//message关键字定义了一个User的消息实例
+//protobuf在序列化时，会将User的消息实例序列化为二进制
+//protobuf在反序列化时，会将二进制反序列为User的消息实例
+
+//protofub序列化优势：1. 性能高 2. 序列后体积小 3. 跨语言
+
+message User {
+
+  //定义User消息实例的字段
+
+  //protobuf的数据类型: string,int32,int64,enum, map,bool,byte,float,double,uint32,uint64
+
+  //每个字段都要设置1个唯一的数字编号,
+  //这个数字编号是protobuf序列化为二进制消息的时候标识每个字段
+  int32 uid = 1;
+  CommandType cmd = 2;
+  string name = 3;
+  map<string, Teacher> course =4;
+  enum CommandType {
+
+    //每个枚举类型必须将其第一个类型映射为 0
+
+    NORMAL = 0; //常规业务消息
+    HEARTBEAT_REQUEST = 1; //客户端心跳消息
+    HEARTBEAT_RESPONSE = 2; //服务端心跳消息
+  }
+}
+
+message Teacher {
+
+  int32 tid = 1;
+  string name = 2;
+
+}
