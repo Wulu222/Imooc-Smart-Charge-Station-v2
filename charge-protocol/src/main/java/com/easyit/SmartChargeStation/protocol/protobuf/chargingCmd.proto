@@ -1,0 +1,13 @@
+syntax = "proto3";
+//生成文件所在包名
+option java_package = "com.easyit.SmartChargeStation.protocol.protobuf";
+//生成的java文件名
+option java_outer_classname = "ChargingCmdProtobuf";
+
+//定义充电指令的消息类型
+message ChargingCmd {
+
+  string cmd = 1;
+  string piles = 2;
+  string opid = 3;
+}
