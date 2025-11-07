@@ -1,0 +1,180 @@
+# Smart-Charge-Station 项目树形结构
+
+## 根目录
+Smart-Charge-Station/
+├── charge-demo/
+├── charge-iotdb/
+├── charge-mqtt-client/
+├── charge-netty-server/
+├── charge-protocol/
+├── charge-web/
+├── logs/
+├── pom.xml
+└── project-structure.txt
+
+## charge-demo 模块
+charge-demo/
+├── src/main/
+│   ├── java/com/easyit/SmartChargeStation/demo/
+│   │   ├── MqttApplication.java
+│   │   ├── NettyApplication.java
+│   │   ├── WebSocketApplication.java
+│   │   ├── controller/
+│   │   │   ├── MqttFactoryCtl.java
+│   │   │   └── MqttPahoCtl.java
+│   │   ├── mqtt/
+│   │   │   ├── FacoryMode/
+│   │   │   │   ├── conf/MqttProps.java
+│   │   │   │   ├── factory/FactoryBuilder.java
+│   │   │   │   ├── model/MqttConstants.java
+│   │   │   │   └── service/MqttService.java
+│   │   │   └── PahoMode/
+│   │   │       ├── conf/MqttConf.java
+│   │   │       ├── service/ClientService.java
+│   │   │       ├── service/impl/
+│   │   │       │   ├── Callback.java
+│   │   │       │   ├── ClientServiceImpl.java
+│   │   │       │   └── MessageListener.java
+│   │   │       └── utils/MqttClientUtils.java
+│   │   ├── netty/
+│   │   │   ├── NettyClient.java
+│   │   │   ├── NettyServer.java
+│   │   │   ├── handlers/
+│   │   │   │   ├── EasyitClientDisconnHandler.java
+│   │   │   │   ├── EasyitClientHandler.java
+│   │   │   │   ├── EasyitClientPkgHandler.java
+│   │   │   │   ├── EasyitClientProtobufHandler.java
+│   │   │   │   ├── EasyitServerHandler.java
+│   │   │   │   ├── EasyitServerHandlerAdapter.java
+│   │   │   │   ├── EasyitServerHeartBeatHandler.java
+│   │   │   │   ├── EasyitServerPkgHandler.java
+│   │   │   │   └── EasyitServerProtobufHandler.java
+│   │   │   └── util/
+│   │   │       ├── ConnectUtil.java
+│   │   │       └── ConstantUtil.java
+│   │   ├── protobuf/
+│   │   │   ├── user.proto
+│   │   │   └── UserProtobuf.java
+│   │   └── websocket/
+│   │       ├── servEndPoint/
+│   │       │   ├── conf/ServerEndPointExp.java
+│   │       │   └── service/WsService.java
+│   │       └── spring/
+│   │           ├── conf/ImoocWebSocketConf.java
+│   │           ├── handler/ImoocHandler.java
+│   │           └── interceptor/ImoocInterceptor.java
+│   └── resources/
+│       ├── application.yml
+│       └── logback-spring.xml
+└── pom.xml
+
+## charge-iotdb 模块
+charge-iotdb/
+├── src/main/
+│   ├── java/com/easyit/SmartChargeStation/iotdb/
+│   │   ├── config/IotDBSessionConf.java
+│   │   ├── controller/ChargingStationIotdbController.java
+│   │   ├── service/
+│   │   │   ├── ChargingStationIotdbService.java
+│   │   │   └── IoTDBService.java
+│   │   ├── service/impl/
+│   │   │   ├── ChargingStationIotdbServiceImpl.java
+│   │   │   └── IoTDBServiceImpl.java
+│   │   └── utils/
+│   │       ├── ChargingStationIotdbUtils.java
+│   │       ├── IoTDBUtils.java
+│   │       └── OpIdGenerator.java
+│   └── resources/
+│       ├── application.yml
+│       ├── init_iotdb.bat
+│       ├── iotdb-database-design.md
+│       ├── iotdb-init-script.sql
+│       ├── logback-spring.xml
+│       └── 充电桩IOTDB数据.csv
+└── pom.xml
+
+## charge-web 模块
+charge-web/
+├── src/main/
+│   ├── java/com/easyit/chargeweb/
+│   │   ├── ChargeWebApplication.java
+│   │   ├── common/ResponseResult.java
+│   │   ├── config/MongoDBConfig.java
+│   │   ├── controller/
+│   │   │   ├── ChargersController.java
+│   │   │   ├── ChargingController.java
+│   │   │   └── OpIdController.java
+│   │   ├── entity/
+│   │   │   ├── ChargingPile.java
+│   │   │   ├── ChargingRecord.java
+│   │   │   └── ChargingRecordDetail.java
+│   │   ├── init/ChargingRecordDataInitializer.java
+│   │   ├── repository/
+│   │   │   ├── ChargingPileRepository.java
+│   │   │   └── ChargingRecordRepository.java
+│   │   ├── service/
+│   │   │   ├── ChargingPileService.java
+│   │   │   └── ChargingRecordService.java
+│   │   └── service/impl/ChargingRecordServiceImpl.java
+│   └── resources/
+│       ├── application.yml
+│       ├── logback-spring.xml
+│       ├── mongodb-init.js
+│       ├── MongoDB初始化说明.md
+│       ├── simple-run-mongo.ps1
+│       └── 充电记录MongoDB初始化说明.md
+└── pom.xml
+
+## charge-protocol 模块
+charge-protocol/
+├── src/main/
+│   └── java/com/easyit/SmartChargeStation/
+│       ├── message/
+│       │   ├── ChargingData.java
+│       │   └── WebSocketMessage.java
+│       └── protocol/
+│           ├── mqtt/message/ChargePayload.java
+│           └── protobuf/
+│               ├── chargingCmd.proto
+│               └── ChargingCmdProtobuf.java
+└── pom.xml
+
+## charge-mqtt-client 模块
+charge-mqtt-client/
+├── src/main/
+│   ├── java/com/easyit/SmartChargeStation/mqtt/client/
+│   │   ├── MqttApplication.java
+│   │   ├── api/SendApi.java
+│   │   ├── conf/MqttProps.java
+│   │   ├── factory/
+│   │   │   ├── FactoryBuilder.java
+│   │   │   ├── InBoundMessageRev.java
+│   │   │   ├── InBoundSubscribe.java
+│   │   │   └── OutBoundSend.java
+│   │   ├── model/MqttConstants.java
+│   │   ├── service/MqttService.java
+│   │   └── utils/TransformerUtils.java
+│   └── resources/
+│       ├── application.yml
+│       └── logback-spring.xml
+└── pom.xml
+
+## charge-netty-server 模块
+charge-netty-server/
+├── src/main/
+│   ├── java/com/easyit/SmartChargeStation/netty/server/
+│   │   ├── NettyApplication.java
+│   │   ├── handlers/
+│   │   │   ├── EasyitServerHeartBeatHandler.java
+│   │   │   ├── EasyitWebSocketInboundHandler.java
+│   │   │   ├── EasyitWebSocketOutboundHandler.java
+│   │   │   ├── ProtobufHandler.java
+│   │   │   └── ProtoMsgToMsgHandler.java
+│   │   ├── utils/HTTPUtils.java
+│   │   └── websocket/
+│   │       ├── EasyitChannelInit.java
+│   │       └── WebSocketServ.java
+│   └── resources/
+│       ├── application.yml
+│       └── logback-spring.xml
+└── pom.xml
